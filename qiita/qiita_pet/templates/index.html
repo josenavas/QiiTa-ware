@@ -1,0 +1,31 @@
+{% extends sitebase.html %}
+{% block head %}
+<script type="text/javascript">
+function shuntSubmit(value) {
+  if(value == 'Get') {
+    document.analysis_form.action = "/completed/";
+    document.analysis_form.submit();
+  }
+  else if(value == 'Del' && confirm('Really delete meta-analysis?')) {
+    document.analysis_form.action ="/del/";
+    document.analysis_form.submit();
+  }
+}
+</script>
+{% end %}
+
+{%block content %}
+<h2>Welcome to QiiTa.</h2>
+ <h3>Completed meta-analyses:</h3>
+    <form method="post" name='analysis_form' id='analysis_form'>
+    <select name='analysis' id='analysis' form='analysis_form' required>
+    {% for analysis in analyses %}
+        <option value='{{analysis[0]}}'>{{analysis[0]}}</option>
+    {% end %}
+    </select>
+    <input type="button" value="Get Analysis" onclick="return shuntSubmit('Get');">
+    <input type="button" value="Del Analysis" onclick="return shuntSubmit('Del');">
+</form>
+</div>
+</div>
+{% end %}
