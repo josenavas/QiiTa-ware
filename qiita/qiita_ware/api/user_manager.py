@@ -95,7 +95,7 @@ def get_all_users():
     raise NotImplementedError("qiita_ware.api.user_manager: get_all_users")
 
 
-def search_user(user_id_hint, **kwargs):
+def search_users(user_id_hint, **kwargs):
     """ Retrieves all the users in the system that match the search query
 
     Inputs:
